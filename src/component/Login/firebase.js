@@ -29,6 +29,16 @@ export const handleGooglesignIn = () => {
 
 }
 
+ export const storeAuthToken = () => {
+    firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+      .then(function (idToken) {
+        sessionStorage.setItem('token', idToken);
+        
+      }).catch(function (error) {
+        // Handle error
+      });
+    }
+
 // Firebase Fb signIn method call.
 
 export const handleFbSignIn = () => {

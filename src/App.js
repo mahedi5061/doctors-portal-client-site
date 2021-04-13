@@ -6,6 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import './App.css';
+import AddDoctor from "./component/AddDoctor/AddDoctor";
 import Appointment from "./component/AppointmentMain/Appointment.js/Appointment";
 import Dashboard from "./component/Dashboard/Dashboard/Dashboard";
 import Home from "./component/HomePage/Home/Home";
@@ -22,14 +23,18 @@ function App() {
            <Route path="/home">
              <Home></Home>
            </Route>
-           <Route path="/appointment">
+           <PrivateRoute path="/appointment">
              <Appointment></Appointment>
-           </Route>
+           </PrivateRoute>
            <Route path="/login">
              <Login></Login>
            </Route>
-           <Route path="/dashboard">
+           <PrivateRoute path="/dashboard">
              <Dashboard></Dashboard>
+           </PrivateRoute>
+           
+           <Route path="/doctor/addDoctor">
+          <AddDoctor></AddDoctor>
            </Route>
            <Route exact path="/">
              <Home></Home>

@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { useHistory, useLocation } from "react-router";
  
 import './Login.css';
-import { createSignInAndPasswordHandler, firebaseInitializeLogIn, handleFbSignIn, handleGooglesignIn, handleGooglesignOut, signInAndPasswordHandler } from './firebase';
+import { createSignInAndPasswordHandler, firebaseInitializeLogIn, handleFbSignIn, handleGooglesignIn, handleGooglesignOut, signInAndPasswordHandler, storeAuthToken } from './firebase';
  
 import { userContext } from '../../App';
 
@@ -35,9 +35,12 @@ function Login() {
         setUser(res);
         setLogin(res);
         history.replace(from);
+        storeAuthToken();
       })
 
   }
+
+
 
   // Fb signInMethod firebase.
 

@@ -2,10 +2,12 @@ import React from 'react';
 import AppointmentShortList from '../AppointmentShortList/AppointmentShortList';
 
 const AppointmentByDate = ({appointments}) => {
-    console.log(appointments)
+     console.log(appointments)
     return (
         <div>
+ 
         <h2 className="text-brand text-center mt-3">Appointments {appointments.length}</h2>
+ 
         {
             appointments.length ?
              <AppointmentShortList appointments={appointments} ></AppointmentShortList>
