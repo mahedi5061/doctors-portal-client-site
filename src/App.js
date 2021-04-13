@@ -9,8 +9,10 @@ import './App.css';
 import AddDoctor from "./component/AddDoctor/AddDoctor";
 import Appointment from "./component/AppointmentMain/Appointment.js/Appointment";
 import Dashboard from "./component/Dashboard/Dashboard/Dashboard";
+import Prescriptions from "./component/Dashboard/Prescriptions/Prescriptions";
 import Home from "./component/HomePage/Home/Home";
 import Login from "./component/Login/Login";
+import Patients from "./component/Patients/Patients";
 import PrivateRoute from "./component/PrivateRoute/PrivateRoute";
 export const userContext = createContext();
 
@@ -33,9 +35,16 @@ function App() {
              <Dashboard></Dashboard>
            </PrivateRoute>
            
-           <Route path="/doctor/addDoctor">
+           <Route path="/addDoctor">
           <AddDoctor></AddDoctor>
            </Route>
+          <Route path="/patients">
+            <Patients></Patients>
+          </Route>
+          <Route path="/prescriptions">
+            <Prescriptions></Prescriptions>
+          </Route>
+
            <Route exact path="/">
              <Home></Home>
            </Route>

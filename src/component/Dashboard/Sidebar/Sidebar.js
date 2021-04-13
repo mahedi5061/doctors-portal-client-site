@@ -34,30 +34,28 @@ const Sidebar = () => {
                     <FontAwesomeIcon icon={faGripHorizontal} /> <span>Dashboard</span> 
                 </Link>
             </li>
-            {
-                isDoctor && <div>
+            
                 <li>
                 <Link to="/appointment" className="text-white">
                     <FontAwesomeIcon icon={faCalendar} /> <span>Appointment</span> 
                 </Link>
             </li>
             <li>
-                <Link to="/doctor/patients" className="text-white">
+                <Link to="/patients" className="text-white">
                     <FontAwesomeIcon icon={faUsers} /> <span>Patients</span>
                 </Link>
             </li>
             <li>
-                <Link to="/doctor/prescriptions" className="text-white">
+                <Link to="/prescriptions" className="text-white">
                     <FontAwesomeIcon icon={faFileMedicalAlt} /> <span>Prescriptions</span>
                 </Link>
             </li>
             <li>
-                <Link to="/doctor/addDoctor" className="text-white">
+                <Link to="/addDoctor" className="text-white">
                     <FontAwesomeIcon icon={faUserPlus} /> <span>Add Doctor</span>
                 </Link>
             </li>
-                </div>
-            }
+            
             <li>
                 <Link to="/doctor/setting" className="text-white" >
                   <FontAwesomeIcon icon={faCog} /> <span>Setting</span>

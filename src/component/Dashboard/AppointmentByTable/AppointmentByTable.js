@@ -19,13 +19,13 @@ const AppointmentByTable = ({appointments}) => {
               appointments.map((appointment, index) => 
                     
                 <tr>
-                    <td>{index + 1}</td>
-                    <td>{appointment.name}</td>
-                    <td>{appointment.gender}</td>
-                    <td>{appointment.age}</td>
-                    <td>{appointment.weight}KG</td>
-                    <td>{appointment.phone}</td>
-                    <td>{appointment.email}</td>
+                    <td><h6>{index + 1}</h6></td>
+                    <td><h6>{appointment.name}</h6></td>
+                    <td><h6>{appointment.gender}</h6></td>
+                    <td><h6>{appointment.age}</h6></td>
+                    <td><h6>{appointment.weight} KG</h6></td>
+                    <td><h6>{appointment.phone}</h6></td>
+                    <td><h6>{appointment.email}</h6></td>
                 </tr>
                 )
             }
