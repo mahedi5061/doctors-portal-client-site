@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import Prescription from '../Dashboard/Prescription/Prescription';
 import Sidebar from '../Sidebar/Sidebar';
 
 const Prescriptions = () => {
+   
     const [prescriptions,setPrescriptions]=useState([])
     useEffect(() => {
         fetch('http://localhost:7000/appointments')

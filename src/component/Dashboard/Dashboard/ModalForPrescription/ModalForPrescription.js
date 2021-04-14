@@ -1,5 +1,7 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  faPlus } from '@fortawesome/free-solid-svg-icons';
 import Modal from 'react-modal';
 const customStyles = {
     content: {
@@ -18,11 +20,12 @@ const customStyles = {
 };
 Modal.setAppElement('#root')
 
-const ModalForPrescription = ({modalIsOpen, closeModal}) => {
+const ModalForPrescription = ({modalIsOpen, closeModal,selectedPatient}) => {
     const { register, handleSubmit, watch,formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
     }
+    console.log(selectedPatient)
     return (
         <div>
      
@@ -34,54 +37,43 @@ const ModalForPrescription = ({modalIsOpen, closeModal}) => {
             contentLabel="Example Modal"
         >
  
- 
-           <form className="p-5 " onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-group">
-                    <input  name="name" type="text"   placeholder="Your Name"  ref={register} className="form-control"/>
-                    {errors.name && <span className="text-danger">This field is required</span>}
-                </div>
-
-
-                <div className="form-group">
-                    <input type="text"   name="phone" placeholder="Phone Number" className="form-control"  ref={register} />
-                    {errors.phone && <span className="text-danger">This field is required</span>}
-                </div>
-
-
-                <div className="form-group">
-                    <input type="text"  name="email" placeholder="Email" className="form-control"  ref={register}/>
-                    {errors.name && <span className="text-danger">This field is required</span>}
-                </div>
-
-                <div className="form-group row">
-                    <div className="col-4">
-
-                        <select className="form-control" name="gender" ref={register}>
-                            <option disabled={true} value="Not set">Select Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Not set">Other</option>
-                        </select>
-                        {errors.name && <span className="text-danger">This field is required</span>}
+                    <div className="px-5 py-3">
+                    {
+                    selectedPatient && 
+                    <div>
+                        <div className="mb-3 mb-4 d-flex justify-content-between">
+                        <span className="text-primary">{selectedPatient.name}</span>
+                            <span>Gender : {selectedPatient.gender}</span>
+                            <span>Age : {selectedPatient.age}</span>
+                        </div>
+                         <form className="row add-prescription" 
+                         onSubmit={handleSubmit(onSubmit)}
+                         >
+                            <div className="col-12">
+                                {errors.medicine && <span className="text-danger">Medicine Name must not empty ! <br/></span>}
+                                {errors.doge && <span className="text-danger">Doge Name must not empty ! <br/> </span>}
+                                {errors.days && <span className="text-danger">Days Must not empty ! <br/> </span>}
+                            </div>
+                            <input className="form-control col-6" ref={register({ required: true })} name="medicine" placeholder="Medicine Name" type="text"/>
+                            <select ref={register({ required: true })}  className="form-control col-3" name="doge">
+                                <option value="1 - 1 - 1">1 - 1 - 1</option>
+                                <option value="1 - 0 - 1">1 - 0 - 1</option>
+                                <option value="1 - 0 - 0">1 - 0 - 0</option>
+                                <option value="1 - 1 - 0">1 - 1 - 0</option>
+                                <option value="1 - 1 - 0">1 - 1 - 0</option>
+                                <option value="0 - 1 - 1">0 - 1 - 1</option>
+                                <option value="1 - 0 - 0">1 - 0 - 0</option>
+                                <option value="0 - 0 - 1">0 - 0 - 1</option>
+                            </select>
+                            <input ref={register({ required: true })} name="days" className="form-control col-2" type="number" placeholder="Days"/>
+                            <button type="submit" className="btn btn-primary col-1"><FontAwesomeIcon icon={faPlus}/></button>
+                         </form>
+                        
+                       
                     </div>
 
-                    <div className="col-4">
-                        <input   className="form-control" name="age" placeholder="Your Age" type="number" ref={register}/>
-                        {errors.name && <span className="text-danger">This field is required</span>}
-                    </div>
-
-                    <div className="col-4">
-                        <input className="form-control"   name="weight" placeholder="Weight" type="number" ref={register}/>
-                        {errors.name && <span className="text-danger">This field is required</span>}
-                    </div>
+                    }
                 </div>
-                 
-                <div className="form-group text-right">
-                    
-                    <input className="btn-brand btn-submit" type="submit" />
-                </div>
-            </form>   
-
         </Modal>
     </div>
     );
